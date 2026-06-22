@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalDigital | Agência Digital</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0b0b0b;
+            color: #eaeaea;
+            text-align: center;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* tipografia mais clean */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            background: linear-gradient(135deg, #00aaff, #0077cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #00aaff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            width: 60px;
+            height: 3px;
+            background: #00aaff;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER - profissional com gradiente e textura sutil */
+        header {
+            padding: 60px 20px 50px;
+            background: linear-gradient(145deg, #0a0a0a 0%, #001833 100%);
+            border-bottom: 1px solid #1a2a4a;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(0, 170, 255, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #b0c7e7;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        .header-tagline {
+            font-size: 1.1rem;
+            color: #80b5e6;
+            background: rgba(0, 170, 255, 0.08);
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 170, 255, 0.15);
+            backdrop-filter: blur(2px);
+            margin-top: 0.75rem;
+        }
+
+        /* seções */
+        .section {
+            padding: 60px 20px;
+            background: #0f0f12;
+            border-bottom: 1px solid #1a1a22;
+        }
+
+        .section:nth-child(even) {
+            background: #0a0a0e;
+        }
+
+        .section p {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            color: #c0cce0;
+        }
+
+        /* cards serviços - grade profissional */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #14141c;
+            padding: 30px 20px 28px;
+            border-radius: 20px;
+            border: 1px solid #23232e;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #00aaff;
+            box-shadow: 0 20px 30px -10px rgba(0, 170, 255, 0.15);
+            background: #181824;
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: #00aaff;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #aab4cc;
+            font-size: 0.98rem;
+            margin: 0;
+        }
+
+        /* contato + telefone destacado */
+        .contact-block {
+            background: #11131f;
+            padding: 40px 30px;
+            border-radius: 28px;
+            border: 1px solid #1f2a44;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .phone-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #d0e4ff;
+            background: #0b1422;
+            padding: 12px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 12px 0 18px;
+            border: 1px solid #2a3a5a;
+            letter-spacing: 1px;
+        }
+
+        .phone-number i {
+            color: #25D366;
+            margin-right: 12px;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+            box-shadow: 0 8px 18px rgba(37, 211, 102, 0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .whatsapp i {
+            margin-right: 12px;
+        }
+
+        .whatsapp:hover {
+            background: #1fbd5e;
+            transform: scale(1.02);
+            box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #2a4a7a;
+            color: #b0ccff;
+            padding: 14px 32px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .btn-outline i {
+            margin-right: 8px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 170, 255, 0.08);
+            border-color: #00aaff;
+            color: white;
+        }
+
+        /* rodapé minimal */
+        footer {
+            background: #06080e;
+            padding: 30px 20px;
+            color: #5a6f8a;
+            font-size: 0.95rem;
+            border-top: 1px solid #141c2a;
+        }
+
+        footer span {
+            color: #00aaff;
+        }
+
+        /* responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .phone-number {
+                font-size: 1.5rem;
+                padding: 10px 18px;
+            }
+            .card {
+                padding: 24px 16px;
+            }
+            .services-grid {
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 12px;
+            }
+            .whatsapp {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+            .phone-number {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>TOTALDIGITAL</h1>
+        <p style="font-size: 1.3rem; font-weight: 300;">Criação de Sites, Apps e Soluções Digitais</p>
+        <div class="header-tagline">
+            <i class="fas fa-rocket" style="margin-right: 8px;"></i> Conectando ideias, gerando resultados.
+        </div>
+    </div>
+</header>
+
+<!-- Sobre -->
+<section class="section">
+    <div class="container">
+        <h2>Sobre</h2>
+        <p style="font-size: 1.1rem;">Somos especialistas em criar soluções digitais para empresas que querem crescer na internet. Com design estratégico e performance, levamos seu negócio para o próximo nível.</p>
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <span style="background: #0d1422; padding: 8px 20px; border-radius: 40px; border: 1px solid #1f2a44; color: #aac2f0;"><i class="fas fa-check-circle" style="color: #00aaff;"></i> +50 projetos</span>
+            <span style="background: #0d1422; padding: 8px 20px; border-radius: 40px; border: 1px solid #1f2a44; color: #aac2f0;"><i class="fas fa-check-circle" style="color: #00aaff;"></i> 4.9 ★ avaliação</span>
+        </div>
+    </div>
+</section>
+
+<!-- Serviços -->
+<section class="section">
+    <div class="container">
+        <h2>Serviços</h2>
+        <div class="services-grid">
+            <div class="card">
+                <i class="fas fa-globe"></i>
+                <h3>Criação de Sites</h3>
+                <p>Sites modernos, responsivos e com botão de WhatsApp integrado. Prontos para converter.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Aplicativos</h3>
+                <p>Apps simples e funcionais para pedidos, orçamentos e atendimento ao cliente.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Marketing Digital</h3>
+                <p>Gestão de perfis, tráfego pago e conteúdo para Instagram e Google.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Design & UX</h3>
+                <p>Identidade visual, interfaces intuitivas e experiência do usuário de ponta.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contato com telefone destacado -->
+<section class="section" style="background: #0c0d14;">
+    <div class="container">
+        <h2>Contato</h2>
+        <div class="contact-block">
+            <p style="font-size: 1.05rem; color: #b8cbee;">📞 <strong>Fale com a gente</strong></p>
+            
+            <!-- Telefone em destaque -->
+            <div class="phone-number">
+                <i class="fas fa-phone-alt"></i> (62) 99292-1941
+            </div>
+
+            <p style="margin-bottom: 10px; color: #b0c4e0;">ou chame direto no WhatsApp</p>
+
+            <a class="whatsapp" href="https://wa.me/5562992921941" target="_blank">
+                <i class="fab fa-whatsapp"></i> CHAMAR NO WHATSAPP
+            </a>
+
+            <!-- Link para ligar também (opção adicional) -->
+            <div style="margin-top: 16px;">
+                <a href="tel:+5562992921941" class="btn-outline">
+                    <i class="fas fa-phone"></i> Ligar agora
+                </a>
+            </div>
+
+            <p style="font-size: 0.9rem; margin-top: 20px; color: #6e85aa;">
+                <i class="far fa-clock"></i> Atendimento de segunda a sexta, 9h às 18h
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Rodapé -->
+<footer>
+    <div class="container">
+        <p style="margin-bottom: 6px;">© 2025 <span>TotalDigital</span> — Soluções digitais com propósito.</p>
+        <p style="font-size: 0.8rem; opacity: 0.6;"><i class="fas fa-code"></i> Feito com 💙 em Goiânia</p>
+    </div>
+</footer>
+
+</body>
+</html>
